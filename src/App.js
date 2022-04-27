@@ -5,7 +5,7 @@ import SignUp from './components/pages/sign/SignUp';
 import Login from './components/pages/sign/Login';
 import Summery from './components/pages/summery/Summery';
 import UserList from './components/pages/users/Users';
-
+import UploadFiles from './components/pages/files/UploadFiles';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         <Route path='/log-in' element= {<Login />} />
         <Route path='/admin' element= {<Summery />} />
         <Route path='/users' element= {<UserList />} />
+        <Route path='/files' element= {<UploadFiles />} />
       </Routes>
     </Router>
     </>
