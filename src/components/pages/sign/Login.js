@@ -3,12 +3,62 @@ import '../../../App.css';
 import Button from '@material-ui/core/Button';
 import LoginIcon from '@material-ui/icons/AccountCircle';
 import axios from 'axios';
-import bcrypt from 'bcryptjs'
 import Navbar from "../../navbar/Navbar";
+import { ThemeProvider } from "@material-ui/core";
 
 export default class LogIn extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        // this.state = {value: ''};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        }
+    
+    handleChange(Event) {
+        this.setState({[Event.target.name]: Event.target.value})
+    }
 
-    //     constructor(props) {
+    handleSubmit(Event) {
+        Event.preventDefault();
+        if(this.state.companyID !== '' && this.state.companyPassword !== ''){
+            axios.post('/log-in', {companyID: this.state.companyID, companyPassword: this.state.companyPassword}).then(res =>{ 
+            localStorage.setItem('token', res.data.token);
+            }).catch(err =>{
+              console.log(err);
+            });
+        }  
+    }
+
+    render() {
+        return (
+            <>
+            < Navbar />
+            <div className="register-container" ref={this.props.containerRef}>
+                <h1 className="sign-in">Login</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form">
+                        <div className="form-group">
+                            <input type="text" name="companyID" placeholder="Company ID" onChange={this.handleChange} required/>
+                        </div>
+                        <div className="form-group">
+                            <input type="text" name="companyPassword" placeholder="Password" onChange={this.handleChange} required/>
+                        </div>
+                        <div className="loginbtn">
+                            {/* <button type="submit" class="btn btn-primary">Sign In</button> */}
+                            <Button type="submit" endIcon={<LoginIcon />} color="primary" variant="contained">
+                              Sign in
+                            </Button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </>
+        );
+    }
+}
+
+  //     constructor(props) {
     //         super(props);
     //         // this.state = {value: ''};
     //         this.handleChange = this.handleChange.bind(this);
@@ -49,30 +99,29 @@ export default class LogIn extends React.Component {
     //     }  
     // }
 
-    render() {
-        return (
-            <>
-            < Navbar />
-            <div className="register-container" ref={this.props.containerRef}>
-                <h1 className="sign-in">LOGIN</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form">
-                        <div className="form-group">
-                            <input type="text" name="email" placeholder="Email" onChange={this.handleChange} required/>
-                        </div>
-                        <div className="form-group">
-                            <input type="text" name="companyPassword" placeholder="Password" onChange={this.handleChange} required/>
-                        </div>
-                        <div className="registerbtn">
-                            {/* <button type="submit" class="btn btn-primary">Sign In</button> */}
-                            <Button type="submit" endIcon={<LoginIcon />} color="primary" variant="contained">
-                              Sign in
-                            </Button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            </>
-        );
-    }
-}
+    // render() {
+    //     return (
+    //         <>
+    //         < Navbar />
+    //         <div className="register-container" ref={this.props.containerRef}>
+    //             <h1 className="sign-in">LOGIN</h1>
+    //             <form onSubmit={this.handleSubmit}>
+    //                 <div className="form">
+    //                     <div className="form-group">
+    //                         <input type="text" name="email" placeholder="Email" onChange={this.handleChange} required/>
+    //                     </div>
+    //                     <div className="form-group">
+    //                         <input type="text" name="companyPassword" placeholder="Password" onChange={this.handleChange} required/>
+    //                     </div>
+    //                     <div className="registerbtn">
+    //                         {/* <button type="submit" class="btn btn-primary">Sign In</button> */}
+    //                         <Button type="submit" endIcon={<LoginIcon />} color="primary" variant="contained">
+    //                           Sign in
+    //                         </Button>
+    //                     </div>
+    //                 </div>
+    //             </form>
+    //         </div>
+    //         </>
+    //     );
+    // }

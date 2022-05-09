@@ -2,8 +2,26 @@ import React from 'react';
 import '../../App.css';
 import "./TopBarForAdmin.css";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import { useEffect } from "react";
+import axios from 'axios';
+import {useNavigate} from 'react-router'
 
 export default function Topbar() {
+
+  let navigate = useNavigate();
+    useEffect(() =>{
+        const token = localStorage.getItem('token');
+        axios.get('/admin',{
+            headers: {
+                Authorization: token,
+            }
+        }).then(res =>{
+            console.log(res);
+        }).catch(err =>{
+            console.log(err);
+            navigate('/log-in');
+        })
+    })
   return (
     <div className="topbar">
       <div className="topbarWrapper">

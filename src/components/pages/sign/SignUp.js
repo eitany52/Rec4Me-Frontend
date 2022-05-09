@@ -8,12 +8,12 @@ import Navbar from "../../navbar/Navbar";
 
 export default class SignUp extends React.Component {
 
-        constructor(props) {
-            super(props);
-            // this.state = {value: ''};
-            this.handleChange = this.handleChange.bind(this);
-            this.handleSubmit = this.handleSubmit.bind(this);
-        }
+    constructor(props) {
+        super(props);
+        // this.state = {value: ''};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
     handleChange(Event) {
         this.setState({[Event.target.name]: Event.target.value})
@@ -21,8 +21,8 @@ export default class SignUp extends React.Component {
 
     handleSubmit(Event) {
         Event.preventDefault();
-        if(this.state.companyID != '' && this.state.companyPassword != ''){
-            var hashedPass;
+        if(this.state.companyID !== '' && this.state.companyPassword !== ''){
+            let hashedPass;
             hashedPass = bcrypt.hashSync(this.state.companyPassword,5, (err,hash)=>{
               if(!err){
                 hashedPass = hash;
