@@ -3,17 +3,8 @@ import React from 'react';
 import "./SideBarForAdmin.css";
 import {
   LineStyle,
-  Timeline,
-  TrendingUp,
   PermIdentity,
-  Storefront,
-  AttachMoney,
-  BarChart,
   MailOutline,
-  DynamicFeed,
-  ChatBubbleOutline,
-  WorkOutline,
-  Report,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -44,15 +35,15 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Notifications</h3>
+          <h3 className="sidebarTitle">Upload</h3>
           <ul className="sidebarList">
-            <Link to="/mail" className="link">
+            <Link to="/files" className="link">
             <li className="sidebarListItem">
               <MailOutline className="sidebarIcon" />
-              Mail
+              Files
             </li>
             </Link>
-            <Link to="/feedback" className="link">
+            {/* <Link to="/feedback" className="link">
             <li className="sidebarListItem">
               <DynamicFeed className="sidebarIcon" />
               Feedback
@@ -63,7 +54,7 @@ export default function Sidebar() {
               <ChatBubbleOutline className="sidebarIcon" />
               Messages
             </li>
-            </Link>
+            </Link> */}
           </ul>
         </div>
       </div>
