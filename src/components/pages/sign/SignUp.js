@@ -5,15 +5,23 @@ import SendIcon from '@material-ui/icons/Send';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import Navbar from "../../navbar/Navbar";
+import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default class SignUp extends React.Component {
-
+        
         constructor(props) {
             super(props);
             // this.state = {value: ''};
             this.handleChange = this.handleChange.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
+            const history = useHistory();
         }
+    
+    // nav = () => {
+    //     const navigate = useNavigate();
+    //     navigate("/log-in");
+    // }   
 
     handleChange(Event) {
         this.setState({[Event.target.name]: Event.target.value})
@@ -29,22 +37,32 @@ export default class SignUp extends React.Component {
               }
             });
       
-            axios.post('/sign-up', {companyID: this.state.companyID,
-            email: this.state.email,
-                                  companyPassword: hashedPass,
-                                  compName: this.state.compName,
-                                  domain: this.state.domain,
-                                  establishment: this.state.establishment,
-                                  occupation: this.state.occupation,
-                                  location: this.state.location,
-                                  size: this.state.size,
-                                  numOfCeo: this.state.numOfCeo,
-                                  numOfManagers: this.state.numOfManagers,
-                                  numOfEmployees: this.state.numOfEmployees,
-                                  systemUsed: this.state.systemUsed}).then(res =>{
-            console.log(res);
+            axios.post('/sign-up', {
+                companyID: this.state.companyID,
+                email: this.state.email,
+                companyPassword: hashedPass,
+                compName: this.state.compName,
+                domain: this.state.domain,
+                establishment: this.state.establishment,
+                occupation: this.state.occupation,
+                location: this.state.location,
+                size: this.state.size,
+                numOfCeo: this.state.numOfCeo,
+                numOfManagers: this.state.numOfManagers,
+                numOfEmployees: this.state.numOfEmployees,
+                systemUsed: this.state.systemUsed})
+              .then(res =>{
+                  //console.log(res.json());
+                  console.log(res);
+                    if(res.status === 200){
+                        //this.app();
+                        history.push('/login');
+                    }else if (res.status === 400){
+                        console.log("duplicate ID");
+                    }
             }).catch(err =>{
-              console.log(err);
+                    // console.log("duplicate ID");
+                    // console.log(err);
             });
         }  
     }
@@ -91,7 +109,7 @@ export default class SignUp extends React.Component {
                         </div>
                         <div className="form-group">
                             {/* <label htmlFor="organization size">Organization’s size : </label> */}
-                            <input type="text" name="size" placeholder="Organization’s size" onChange={this.handleChange} required/>
+                            <input type="number" name="size" placeholder="Organization’s size" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
                             {/* <label htmlFor="num of ceo">Number of CEOs and Deputy CEOs : </label> */}
@@ -103,7 +121,7 @@ export default class SignUp extends React.Component {
                         </div>
                         <div className="form-group">
                             {/* <label htmlFor="Amount of employees">Amount of regular employees : </label> */}
-                            <input type="text" name="numOfEmployees" placeholder="Amount of regular employees" onChange={this.handleChange} required/>
+                            <input type="number" name="numOfEmployees" placeholder="Amount of regular employees" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
                             {/* <label htmlFor="organization system used">Organization’s operation system used : </label> */}
