@@ -58,55 +58,55 @@ export default class SignUp extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="form">
                         <div className="form-group">
-                            {/* <label htmlFor="company id">Company ID : </label> */}
+                            <label htmlFor="company id">Company ID : </label>
                             <input type="number" name="companyID" placeholder="Company id" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="email">Email : </label> */}
+                            <label htmlFor="email">Email : </label>
                             <input type="text" name="email" placeholder="Email" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="password">Password : </label> */}
+                            <label htmlFor="password">Password : </label>
                             <input type="text" name="companyPassword" placeholder="Password" onChange={this.handleChange} required/>
                         </div>
                             <div className="form-group">
-                            {/* <label htmlFor="organization name">Organization's name : </label> */}
+                            <label htmlFor="organization name">Organization's name : </label>
                             <input type="text" name="compName" placeholder="Organization's name" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="organization domain">Organization's domain : </label> */}
+                            <label htmlFor="organization domain">Organization's domain : </label>
                             <input type="text" name="domain" placeholder="Organization's domain" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="date of establishment">Date of establishment : </label> */}
-                            <input type="text" name="establishment" placeholder="Date of establishment of the company" onChange={this.handleChange} required/>
+                            <label htmlFor="date of establishment">Date of establishment : </label>
+                            <input type="date" name="establishment" placeholder="Date of establishment of the company" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="occupation">The organization is local or global : </label> */}
+                            <label htmlFor="occupation">The organization is local or global : </label>
                             <input type="text" name="occupation" placeholder="Local or Global" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="location">The organization’s location : </label> */}
+                            <label htmlFor="location">The organization’s location : </label>
                             <input type="text" name="location" placeholder="The organization’s location" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="organization size">Organization’s size : </label> */}
+                            <label htmlFor="organization size">Organization’s size : </label>
                             <input type="text" name="size" placeholder="Organization’s size" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="num of ceo">Number of CEOs and Deputy CEOs : </label> */}
+                            <label htmlFor="num of ceo">Number of CEOs and Deputy CEOs : </label>
                             <input type="number" name="numOfCeo" placeholder="Number of CEOs and Deputy CEOs" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="amount of managers">Amount of managers : </label> */}
+                            <label htmlFor="amount of managers">Amount of managers : </label>
                             <input type="number" name="numOfManagers" placeholder="Amount of department heads&team leaders" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="Amount of employees">Amount of regular employees : </label> */}
+                            <label htmlFor="Amount of employees">Amount of regular employees : </label>
                             <input type="text" name="numOfEmployees" placeholder="Amount of regular employees" onChange={this.handleChange} required/>
                         </div>
                         <div className="form-group">
-                            {/* <label htmlFor="organization system used">Organization’s operation system used : </label> */}
+                            <label htmlFor="organization system used">Organization’s operation system used : </label>
                             <input type="text" name="systemUsed" placeholder="Organization’s operation system used" onChange={this.handleChange} required/>
                         </div>
                         <div className="registerbtn">
