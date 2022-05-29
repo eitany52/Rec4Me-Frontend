@@ -36,27 +36,11 @@ function UploadFiles() {
               <Sidebar />
               <div className="summery">
               <div className="uploadContainer">
-                <form onSubmit={handleSubmit}>
-
-                  {/* first style of input */}
-                  {/* <h3 className="h3header">Add here the csv file of the workers:</h3> <br />
-                  <label>
-                    <input className="inputButton" type="file" onChange={handleChange} id="contained-button-file" />
-                    <Button className="buttonStyle" type="submit" variant="contained" color="primary" component="span">
-                      Upload
-                    </Button>
-                  </label> */}
-
-                  {/* second style of input */}
-                  <input className="custom-file-input" type="file" onChange={handleChange}/>
-
-                  {/* third style of input */}
-                  {/* <label class="uploadLabel">
-                      <i class="fas fa-file-upload"></i> 
-                      <input type="file" className="uploadButton" onChange={handleChange}/>
-                      Upload
-                  </label> */}
-
+                <form>
+                  <input className="custom-file-input" type="file" accept=".xlsx, .xls, .csv" onChange={handleChange}/>
+                  <Button className="buttonStyle" type="submit" variant="contained" color="primary" component="span" onClick={handleSubmit}>
+                      UPLOAD FILE
+                  </Button>
                 </form>
               </div>
           </div>

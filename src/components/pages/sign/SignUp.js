@@ -7,7 +7,7 @@ import bcrypt from 'bcryptjs';
 import Navbar from "../../navbar/Navbar";
 import { useNavigate } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import summery from './../summery'
+
 
 
 export default class SignUp extends React.Component {
