@@ -190,7 +190,6 @@ export default function Checking() {
                                required/>
                         </div>
                         <div className="registerbtn">
-                            {/* <button type="submit" class="btn btn-primary">Submit</button> */}
                             <Button type="submit" endIcon={<SendIcon />} color="primary" variant="contained">
                               Sign Up
                             </Button>
