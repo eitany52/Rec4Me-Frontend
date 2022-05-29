@@ -7,63 +7,109 @@ import bcrypt from 'bcryptjs';
 import Navbar from "../../navbar/Navbar";
 import { useNavigate } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import summery from './../summery'
 
-
-export default class SignUp extends React.Component {
-        
-        constructor(props) {
-            super(props);
-            this.handleChange = this.handleChange.bind(this);
-            this.handleSubmit = this.handleSubmit.bind(this);
-        }
+export default function Checking(){
+    const [missingAddress, setMissingAddress] = React.useState(true);
+    const [username, setUsername] = React.useState(null);
+    setMissingAddress(true);
+    const [zip, setZip] = React.useState("");
+    const [email, setEmail] = React.useState("");
     
-    handleChange(Event) {
-        this.setState({[Event.target.name]: Event.target.value})
-    }
+    //     constructor(props) {
+    //         super(props);
+    //         this.handleChange = this.handleChange.bind(this);
+    //         this.handleSubmit = this.handleSubmit.bind(this);
+    //     }
+    
+    // handleChange(Event) {
+    //     this.setState({[Event.target.name]: Event.target.value})
+    // }
 
-    handleSubmit(Event) {
-        Event.preventDefault();
-        if(this.state.companyID != '' && this.state.companyPassword != ''){
-            var hashedPass;
-            hashedPass = bcrypt.hashSync(this.state.companyPassword,5, (err,hash)=>{
-              if(!err){
-                hashedPass = hash;
-              }
-            });
+    // handleSubmit(Event) {
+    //     Event.preventDefault();
+    //     if(this.state.companyID != '' && this.state.companyPassword != ''){
+    //         var hashedPass;
+    //         hashedPass = bcrypt.hashSync(this.state.companyPassword,5, (err,hash)=>{
+    //           if(!err){
+    //             hashedPass = hash;
+    //           }
+    //         });
       
-            axios.post('/sign-up', {
-                companyID: this.state.companyID,
-                email: this.state.email,
-                companyPassword: hashedPass,
-                compName: this.state.compName,
-                domain: this.state.domain,
-                establishment: this.state.establishment,
-                occupation: this.state.occupation,
-                location: this.state.location,
-                size: this.state.size,
-                numOfCeo: this.state.numOfCeo,
-                numOfManagers: this.state.numOfManagers,
-                numOfEmployees: this.state.numOfEmployees,
-                systemUsed: this.state.systemUsed})
-              .then(res =>{
-                  //console.log(res.json());
-                  console.log(res);
-                    if(res.status === 200){
-                        //this.app();
-                        //history.push('/login');
-                        
-                    }else if (res.status === 400){
-                        console.log("duplicate ID");
-                    }
-            }).catch(err =>{
-                    // console.log("duplicate ID");
-                    // console.log(err);
-            });
-        }  
-    }
+    //         axios.post('/sign-up', {
+    //             companyID: this.state.companyID,
+    //             email: this.state.email,
+    //             companyPassword: hashedPass,
+    //             compName: this.state.compName,
+    //             domain: this.state.domain,
+    //             establishment: this.state.establishment,
+    //             occupation: this.state.occupation,
+    //             location: this.state.location,
+    //             size: this.state.size,
+    //             numOfCeo: this.state.numOfCeo,
+    //             numOfManagers: this.state.numOfManagers,
+    //             numOfEmployees: this.state.numOfEmployees,
+    //             systemUsed: this.state.systemUsed})
+    //           .then(res =>{
+    //               //console.log(res.json());
+    //               console.log(res);
+    //                 if(res.status === 200){
+    //                     //this.app();
+    //                     //history.push('/login');
+    //                 }else if (res.status === 400){
+    //                     console.log("duplicate ID");
+    //                 }
+    //         }).catch(err =>{
+    //                 // console.log("duplicate ID");
+    //                 // console.log(err);
+    //         });
+    //     }  
+    // }
 
-    render() {
+    // {!missingAddress ? (
+    //     <Alert className="center-alert" variant="danger">
+    //       <p className="text-center">
+    //         {
+    //           "Please file the Address filed ( Country, City, Street)"
+    //         }
+    //       </p>
+    //     </Alert>
+    //   ) : null}
+
+//     history.push(
+//         mode === "giver"
+//           ? Paths.dashboard.link()
+//           : Paths.takerLanding.root.link()
+//       );
+// const history = useHistory();
+
+// register,
+//     handleSubmit,
+//     formState: { errors },
+//   } = useForm({
+//     mode: "onBlur",
+//     reValidateMode: "onChange",
+//     defaultValues: getDefaultData(firebase.auth().currentUser),
+//   });
+
+// Need to be in the return
+/*{ <Form.Group controlId="licenseNumber" className="pt-4">
+        <SolidIconCountry className="icons-size icons-red-color" />
+        <Form.Label className="P-labels">{t("City")}</Form.Label>
+        <Form.Control
+        className="P-inputs"
+        onChange={(e) => setCitySelect(e.target.value)}
+        />
+    </Form.Group> }*/
+
+/*{ <Form.Group controlId="companyName" className="mt-3">    
+    <Form.Label>{t("Zip")}</Form.Label>
+    <Form.Control
+        type="email"
+        onChange={(e) => setZip(e.target.value)}
+        value={zip}
+    />
+    </Form.Group> }*/
+
         return (
             <>
             <Navbar />
@@ -75,10 +121,10 @@ export default class SignUp extends React.Component {
                             {/* <label htmlFor="company id">Company ID : </label> */}
                             <input type="number" name="companyID" placeholder="Company id" onChange={this.handleChange} required/>
                         </div>
-                        <div className="form-group">
+                        { <div className="form-group">
                             {/* <label htmlFor="email">Email : </label> */}
                             <input type="text" name="email" placeholder="Email" onChange={this.handleChange} required/>
-                        </div>
+                        </div> }
                         <div className="form-group">
                             {/* <label htmlFor="password">Password : </label> */}
                             <input type="text" name="companyPassword" placeholder="Password" onChange={this.handleChange} required/>
@@ -134,5 +180,4 @@ export default class SignUp extends React.Component {
             </div>
             </>
         );
-    }
 }
