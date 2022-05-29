@@ -5,7 +5,7 @@ import Topbar from "../../topbar/TopBarForAdmin";
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
-function UploadFiles() {
+export default function UploadFiles() {
     const [file, setFile] = useState()
 
     function handleChange(event) {
@@ -48,4 +48,4 @@ function UploadFiles() {
       </>
     );
   }
-  export default UploadFiles;
+  // export default UploadFiles;

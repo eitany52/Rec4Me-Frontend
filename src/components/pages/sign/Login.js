@@ -6,13 +6,11 @@ import axios from 'axios';
 import bcrypt from 'bcryptjs'
 import Navbar from "../../navbar/Navbar";
 
-export default class LogIn extends React.Component {
-
-    render() {
+export default function LogIn() {
         return (
             <>
             < Navbar />
-            <div className="register-container" ref={this.props.containerRef}>
+            <div className="register-container">
                 <h1 className="sign-in">LOGIN</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form">
@@ -33,5 +31,4 @@ export default class LogIn extends React.Component {
             </div>
             </>
         );
-    }
 }
