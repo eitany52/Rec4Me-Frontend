@@ -5,16 +5,23 @@ import LoginIcon from '@material-ui/icons/AccountCircle';
 import axios from 'axios';
 import Navbar from "../../navbar/Navbar";
 import { ThemeProvider } from "@material-ui/core";
+import { useNavigate  } from 'react-router-dom';
 
 export default function LogIn(){
     const [companyID, setCompanyID] = React.useState('');
     const [companyPassword, setCompanyPassword] = React.useState('');
+    const navigate = useNavigate();
 
     function handleSubmit(Event) {
         Event.preventDefault();
         if(companyID !== '' && companyPassword !== ''){
-            axios.post('/log-in', {companyID: companyID, companyPassword: companyPassword}).then(res =>{ 
+            axios.post('/log-in', {companyID: companyID, companyPassword: companyPassword}).then(res =>{
             localStorage.setItem('token', res.data.token);
+            if(res.status === 200){
+                navigate("/admin");
+            }else if (res.status === 400){
+                console.log("duplicate ID");
+            }
             }).catch(err =>{
               console.log(err);
             });
@@ -23,7 +30,7 @@ export default function LogIn(){
         return (
             <>
             < Navbar />
-            <div className="register-container" ref={this.props.containerRef}>
+            <div className="register-container">
                 <h1 className="sign-in">Login</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form">
@@ -36,7 +43,7 @@ export default function LogIn(){
                                 required/>
                         </div>
                         <div className="form-group">
-                            <input type="text"
+                            <input type="password"
                                 name="companyPassword" 
                                 placeholder="Password" 
                                 value={companyPassword}

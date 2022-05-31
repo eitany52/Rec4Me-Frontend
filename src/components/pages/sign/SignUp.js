@@ -48,11 +48,9 @@ export default function Checking() {
                 numOfEmployees: numOfEmployees,
                 systemUsed: systemUsed})
               .then(res =>{
-                  //console.log(res.json());
                   console.log(res);
                     if(res.status === 200){
-                        //this.app();
-                        //history.push('/login');
+                        navigate("/log-in");
                     }else if (res.status === 400){
                         console.log("duplicate ID");
                     }
@@ -91,7 +89,7 @@ export default function Checking() {
                         <div className="form-group">
                             <label htmlFor="password">Password : </label>
                             <input
-                               type="text"
+                               type="password"
                                name="companyPassword" 
                                placeholder="Password"
                                value={companyPassword}
@@ -119,7 +117,7 @@ export default function Checking() {
                         </div>
                         <div className="form-group">
                             <label htmlFor="date of establishment">Date of establishment : </label>
-                            <input type="text"
+                            <input type="date"
                                name="establishment" 
                                placeholder="Date of establishment of the company" 
                                value={establishment} 
